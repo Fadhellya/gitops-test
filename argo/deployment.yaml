@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-example
+  namespace: apple
+  labels:
+    app: httpd-example
+    app.kubernetes.io/name: apache
+    app.kubernetes.io/instance: httpd-example
+    app.kubernetes.io/component: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpd-example
+  template:
+    metadata:
+      labels:
+        app: httpd-example
+        app.kubernetes.io/name: apache
+        app.kubernetes.io/instance: httpd-example
+        app.kubernetes.io/component: web
+    spec:
+      containers:
+        - name: httpd
+          image: registry.redhat.io/rhscl/httpd-24-rhel7:latest
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
