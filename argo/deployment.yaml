@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: httpd
-          image: docker.io/httpd:latest
+          image: httpd
           ports:
             - containerPort: 8080
               name: http
