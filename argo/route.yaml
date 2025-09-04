@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: httpd-example
-  namespace: apple
+  namespace: access-poc
   labels:
     app: httpd-example
     app.kubernetes.io/component: web
