@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpd-example
-  namespace: access-poc
+  namespace: demo
   labels:
     app: httpd-example
     app.kubernetes.io/name: apache
