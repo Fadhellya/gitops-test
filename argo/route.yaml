@@ -15,7 +15,7 @@ spec:
     name: httpd-example
     weight: 100
   port:
-    targetPort: 80-tcp
+    targetPort: http
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
